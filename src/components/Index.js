@@ -74,6 +74,7 @@ let Index = {
       }
       this.config.baseHostnameShort = parts.join('.')
       document.title = this.config.baseHostname
+      this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
     buildModuleURL (module, group) {
       if (group === 'database') {

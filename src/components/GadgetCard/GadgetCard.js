@@ -22,7 +22,7 @@ let GadgetCard = {
       return this.$parent.buildModuleURL(this.module, this.moduleGroup)
     },
     imageURL () {
-      return this.config.baseURL + '/img/module/' + this.module + '.png'
+      return this.config.baseImage + '/img/module/' + this.module + '.png'
     },
     visible () {
       if (this.searchKeyword === '') {
