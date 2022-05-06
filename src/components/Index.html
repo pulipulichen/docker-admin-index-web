@@ -1,135 +1,57 @@
-<div class="Index ui form">
-  HELLO WORLD
-  <div class="fields">
-    <div class="two wide field favicon-preview-field"> 
-      <img v-bind:src="localConfig.fieldFavicon" class="favicon-preview"
-           v-if="localConfig.fieldFavicon"
-           v-on:load="checkFaviconRatio"
-           ref="faviconPreview" />
+<div class="Index">
+  <div class="ui top fixed menu">
+    <div class="item">
+      <img :src="config.baseURL + '/img/favicon/favicon.png'" />
     </div>
-    <div class="fourteen wide field">
-      <div class="field">
-        <label for="fieldTitle">
-          Title
-        </label>
-        <input type="text" 
-               v-model="localConfig.fieldTitle" 
-               id="fieldTitle"
-               onfocus="this.select()"
-               />
-      </div>
+    <span class="item">
+      <h1>{{ config.baseHostnameShort }}</h1>
+    </span>
+    <a class="item"
+       :href="computedWebappURL"
+       target="webapp">
+      Webapp
+    </a>
+    <a class="item"
+       :href="computedConsoleURL"
+       target="comsole">
+      Console
+    </a>
+    <a class="item"
+       :href="computedBackupURL"
+       target="backup">
+      Backup
+    </a>
 
-      <label for="fieldFavicon">
-        Favicon
-        <span v-if="!faviconRationCorrect"
-              class="error">
-          (Favicon should be a square.)
-        </span>
-      </label>
-      <input type="text" 
-             v-model="localConfig.fieldFavicon" 
-             onfocus="this.select()"
-             v-bind:class="{'error': !faviconRationCorrect }"
-             id="fieldFavicon" />
+    <div class="right item">
+      <div class="ui icon input">
+        <input 
+          type="text" 
+          placeholder="Search..."
+          v-model="localConfig.searchKeyword">
+        <i class="search icon"></i>
+      </div>
     </div>
   </div>
   
-  <div class="ui top attached tabular menu">
-    <div class="item" 
-         v-bind:class="{active: (localConfig.selectFavicon === 'preset')}"
-         v-on:click="localConfig.selectFavicon = 'preset'">Preset</div>
-    <div class="item" 
-         v-bind:class="{active: (localConfig.selectFavicon === 'search')}"
-         v-on:click="localConfig.selectFavicon = 'search'">Search</div>
-    <div class="item" 
-         v-bind:class="{active: (localConfig.selectFavicon === 'upload')}"
-         v-on:click="localConfig.selectFavicon = 'upload'">Upload</div>
-    
-  </div>
-  <div class="ui bottom attached active tab segment">
-    
-    <template v-if="localConfig.selectFavicon === 'search'">
-      <div class="field">
-        <label for="fieldFindFavicon">
-          Find Favicon
-        </label>
-        <input type="text" 
-               v-model="fieldFindFavicon" 
-               onfocus="this.select()"
-               id="fieldFindFavicon" />
-        <div class="ui fluid basic buttons"
-             v-bind:class="{disabled: (fieldFindFavicon === '')}">
-          <a class="ui button"
-             v-bind:href="linkFlaticon"
-             v-bind:target="'iconfinaicon_' + fieldFindFaviconEncoded">
-               flaticon
-          </a>
-          <a class="ui button"
-             v-bind:href="linkFindIcon"
-             v-bind:target="'findicon_' + fieldFindFaviconEncoded">
-               Findicons
-          </a>
-          <a class="ui button"
-             v-bind:href="linkIconNinja"
-             v-bind:target="'iconninja_' + fieldFindFaviconEncoded">
-               Icon Ninja
-          </a>
-        </div>
-      </div>
-    </template>
-    <template v-if="localConfig.selectFavicon === 'upload'">
-      <div class="field">
-        <label>
-          Upload Favicon
-        </label>
-        <div class="ui fluid basic buttons">
-          <a class="ui button"
-             href="https://postimages.org/"
-             target="postimage">
-               Post Image
-          </a>
-          <a class="ui button"
-             href="https://blog.pulipuli.info/"
-             target="postimageInstruction">
-               Post Image Usage Instruction
-          </a>
-        </div>
-      </div>
-    </template>
+  <div class="menu-padding"></div>
 
-    <template v-if="localConfig.selectFavicon === 'preset'">
-      <span v-for="presetItem in presetList"
-           class="preset-list">
-        <img v-for="presetLink in presetItem.links"
-             v-bind:src="presetLink"
-             v-on:click="setPresetLink(presetItem.item, presetLink)" />
-      </span>
-    </template>
+  <div class="ui cards">
+    <GadgetCard 
+      v-for="m in webappModules"
+      v-bind:config="config"
+      v-bind:localConfig="localConfig"
+      v-bind:utils="utils"
+      v-bind:module="m"
+      moduleGroup="webapp">
+    </GadgetCard>
+
+    <GadgetCard 
+      v-for="m in config.ENV_DATABASE_DRIVERS"
+      v-bind:config="config"
+      v-bind:localConfig="localConfig"
+      v-bind:utils="utils"
+      v-bind:module="m"
+      moduleGroup="database">
+    </GadgetCard>
   </div>
-  <div class="ui segment">
-    
-  </div>
-  <div class="field">
-    <label for="fieldOutput">
-      Output
-    </label>
-    <textarea v-html="fieldOutput"
-              id="fieldOutput"
-              onfocus="this.select()"></textarea>
-  </div>
-  <div class="ui fluid button"
-       v-on:click="copyFieldOutput">
-    COPY
-  </div>
-  
-  <!--
-  <div class="ui grid iframes">
-    <div class="eight wide column">
-      <iframe src="https://www.blogger.com/blog/post/edit/16607461/8994542276547065"></iframe>
-    </div>
-    <div class="eight wide column">
-      <iframe src="https://pulipulichen.github.io/Pulipuli-Blog/user-js-css/blog-draft-image-parser/"></iframe>
-    </div>
-  </div>
-  -->
 </div>

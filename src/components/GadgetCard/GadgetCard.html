@@ -1,0 +1,28 @@
+<a class="ui raised card"
+   :href="link"
+   v-if="visible"
+   :class="labelType">
+  <div class="content">
+    <div class="center aligned author">
+      <img class="ui avatar image" 
+           :src="imageURL">
+      {{ module }}
+      <br />
+      <div class="ui top right attached mini label"
+           :class="labelType">
+        {{ moduleGroup}}
+      </div>
+    </div>
+    
+  </div>
+  <div class="extra content">
+    <div class="center aligned header">
+      {{ $t(module + '.header') }}
+    </div>
+    <div class="center aligned description">
+      <p>
+        {{ $t(module + '.description') }}
+      </p>
+    </div>
+  </div>
+</a>

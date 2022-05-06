@@ -9,7 +9,12 @@ let config = {
     width: null,
     height: null,
     ratio: null
-  }
+  },
+
+  baseHostname: '',
+  baseHostnameShort: '',
+  ENV_DATABASE_DRIVERS: [],
+  ENV_DEV_LOCAL_PORTS: {}
 }
 
 import styleConfig from './styles/style.config.js'

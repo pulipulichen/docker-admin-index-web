@@ -1,5 +1,7 @@
 'use strict';
 
+let baseURL = 'http://localhost:5500'
+
 //const dotenv = require('dotenv');
 //dotenv.config();
 //const baseURL = process.env.PROTOCOL + '//' + process.env.PUBLIC_HOST + ':' + process.env.PORT
@@ -9,6 +11,7 @@ const path = require('path')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const webpack = require('webpack');
 
 let compileCount = 0
 
@@ -19,6 +22,10 @@ module.exports = (env, argv) => {
   }
   if (argv.watch === undefined) {
     argv.watch = false
+  }
+
+  if (argv.mode === 'production') {
+    baseURL = 'https://github.com/pulipulichen/docker-admin-index-web'
   }
 
   let webpackConfig = {
@@ -33,7 +40,8 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, '../dist/'),
       filename: '[name].js',
-      publicPath: './dist/'
+      publicPath: baseURL + '/dist/'
+      //publicPath: 'auto'
     },
     resolve: {
       alias: {
@@ -78,7 +86,7 @@ module.exports = (env, argv) => {
                 name: '[name].[ext]',
                 outputPath: 'asset',
                 //publicPath: baseURL + '/spa/asset'
-                publicPath: './dist/asset'
+                publicPath: baseURL + '/dist/asset'
               }
             }
           ]
@@ -122,12 +130,17 @@ module.exports = (env, argv) => {
           });
         } // apply: (compiler) => {
       },
+      // new webpack.optimize.LimitChunkCountPlugin({
+      //   maxChunks: 1,
+      // }),
 //      new BundleAnalyzerPlugin({
 //        analyzerPort: 5001
 //      })
     ],  // plugins: [
     optimization: {
       splitChunks: {
+        // minSize: 10,
+        // maxSize: 250000000,
         cacheGroups: {
           // Split vendor code to its own chunk(s)
 //          vendors: {

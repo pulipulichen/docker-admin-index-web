@@ -1,6 +1,6 @@
 /* global __webpack_public_path__ */
-import Vue from 'vue'
 
+import Vue from 'vue'
 
 // ----------------------------------
 // plugins
@@ -187,4 +187,4 @@ if (typeof(baseURL) === 'string') {
   }, 0)
 }
 
-import './service-worker-loader.js'
+//import './service-worker-loader.js'

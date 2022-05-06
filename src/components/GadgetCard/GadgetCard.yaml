@@ -1,0 +1,65 @@
+en:
+  webapp:
+    header: Webapp
+    description: Your main application.
+
+  console:
+    header: Console
+    description: Webapp's terminal.
+
+  backup:
+    header: Bakcup
+    description: Backup data from your webapp and databases.
+
+  mysql:
+    header: MySQL
+    description: Popular database for medium applications.
+
+  pgsql:
+    header: PostgreSQL
+    description: Object-oriented database for enterprise applications.
+    
+  sqlite:
+    header: SQLite
+    description: Lite and easy to use database for portable applications.
+    
+  neo4j:
+    header: Neo4j
+    description: Graph database for social network analysis applications.
+  
+  mongo:
+    header: MongoDB
+    description: JSON document database for schema-free applications.
+  
+zh-TW:
+  webapp:
+    header: Webapp
+    description: Your main application.
+
+  console:
+    header: Console
+    description: Webapp's terminal.
+
+  backup:
+    header: Bakcup
+    description: Backup data from your webapp and databases.
+
+  mysql:
+    header: MySQL
+    description: Popular database for medium applications.
+
+  pgsql:
+    header: PostgreSQL
+    description: Object-oriented database for enterprise applications.
+    
+  sqlite:
+    header: SQLite
+    description: Lite and easy to use database for portable applications.
+    
+  neo4j:
+    header: Neo4j
+    description: Graph database for social network analysis applications.
+  
+  mongo:
+    header: MongoDB
+    description: JSON document database for schema-free applications.
