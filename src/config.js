@@ -13,7 +13,7 @@ let config = {
 
   baseHostname: '',
   baseHostnameShort: '',
-  baseImage: '/',
+  baseImage: '',
   ENV_DATABASE_DRIVERS: [],
   ENV_DEV_LOCAL_PORTS: {}
 }

@@ -49,6 +49,7 @@ let Index = {
           location.href.indexOf('.paas-vpn.') === -1) {
         this.config.baseHostname = 'dev-local'
         this.config.baseHostnameShort = 'dev-local'
+        this.config.baseImage = this.config.baseURL
         return true
       }
 
@@ -85,7 +86,13 @@ let Index = {
         return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS[module]
       }
       else {
-        return 'http://' + module + '.' + this.config.baseHostname + '/'
+        let {port} = new URL(location.href)
+
+        if (port !== '') {
+          port = ":" + port
+        }
+
+        return 'http://' + module + '.' + this.config.baseHostname + port + '/'
       }
     }
   }
