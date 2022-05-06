@@ -25,7 +25,7 @@ module.exports = (env, argv) => {
   }
 
   if (argv.mode === 'production') {
-    baseURL = 'https://github.com/pulipulichen/docker-admin-index-web'
+    baseURL = 'https://pulipulichen.github.io/docker-admin-index-web'
   }
 
   let webpackConfig = {
