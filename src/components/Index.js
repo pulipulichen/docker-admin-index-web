@@ -8,7 +8,7 @@ let Index = {
     return {
       baseHostname: 'dev_local',
       webappModules: ['webapp', 'console', 'backup'],
-      paasModules: ['git', 'git_deploy', 'quay', 'argocd', 'rencher']
+      paasModules: ['paas_git_jobs', 'paas_git_deploy', 'paas_quay', 'paas_argocd', 'paas_rencher']
     }
   },
   components: {
@@ -28,6 +28,11 @@ let Index = {
     },
     computedBackupURL () {
       return this.buildModuleURL('backup')
+    },
+    enabledPaasModules () {
+      return this.paasModules.filter(module => {
+        return (window[`ENV_` + module.toUpperCase()])
+      })
     },
     sortedStaredModules () {
       let modules = []
