@@ -29,6 +29,20 @@ let Index = {
     computedBackupURL () {
       return this.buildModuleURL('backup')
     },
+    sortedStaredModules () {
+      let modules = []
+      
+      this.localConfig.recentModules.forEach(module => {
+        if (this.localConfig.starredModules.indexOf(module) ===-1) {
+          return false
+        }
+        modules.push(module)
+      })
+      
+      
+      
+      return modules
+    },
     sortedModules () {
       let modules = []
       return modules
