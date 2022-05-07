@@ -27,6 +27,10 @@ let Index = {
     },
     computedBackupURL () {
       return this.buildModuleURL('backup')
+    },
+    sortedModules () {
+      let modules = []
+      return modules
     }
   },
   watch: {
