@@ -7,7 +7,8 @@ let Index = {
     this.$i18n.locale = this.config.localConfig
     return {
       baseHostname: 'dev_local',
-      webappModules: ['webapp', 'console', 'backup']
+      webappModules: ['webapp', 'console', 'backup'],
+      paasModules: ['git', 'git_deploy', 'quay', 'argocd', 'rencher']
     }
   },
   components: {
