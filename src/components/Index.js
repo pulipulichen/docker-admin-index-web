@@ -112,7 +112,7 @@ let Index = {
           location.href.indexOf('.paas-vpn.') === -1) {
         this.config.baseHostname = 'dev-local'
         this.config.baseHostnameShort = 'dev-local'
-        this.config.baseImage = this.config.baseURL
+        //this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
         return true
       }
 
@@ -138,7 +138,7 @@ let Index = {
       }
       this.config.baseHostnameShort = parts.join('.')
       document.title = this.config.baseHostname
-      this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
+      //this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
     buildModuleURL (module, group) {
       if (group === 'paas') {

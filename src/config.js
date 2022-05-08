@@ -13,7 +13,7 @@ let config = {
 
   baseHostname: '',
   baseHostnameShort: '',
-  baseImage: '',
+  baseImage: 'https://pulipulichen.github.io/docker-admin-index-web',
   ENV_DATABASE_DRIVERS: [],
   ENV_DEV_LOCAL_PORTS: {}
 }
