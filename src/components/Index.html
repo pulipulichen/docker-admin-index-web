@@ -1,4 +1,5 @@
-<div class="Index">
+<div class="Index"
+     v-show="config.inited">
   <div class="ui top fixed menu">
     <div class="item">
       <img :src="config.baseImage + '/img/favicon/favicon.png'" />
@@ -37,21 +38,19 @@
 
   <div class="ui cards">
     <GadgetCard 
-      v-for="m in webappModules"
+      v-for="m in sortedStaredModules"
       v-bind:config="config"
       v-bind:localConfig="localConfig"
       v-bind:utils="utils"
-      v-bind:module="m"
-      moduleGroup="webapp">
+      v-bind:module="m">
     </GadgetCard>
 
     <GadgetCard 
-      v-for="m in config.ENV_DATABASE_DRIVERS"
+      v-for="m in sortedModules"
       v-bind:config="config"
       v-bind:localConfig="localConfig"
       v-bind:utils="utils"
-      v-bind:module="m"
-      moduleGroup="database">
+      v-bind:module="m">
     </GadgetCard>
   </div>
 </div>

@@ -1,6 +1,6 @@
 let GadgetCard = {
   props: ['config', 'localConfig', 'utils', 
-      'module', 'moduleGroup'],
+      'module'],
   data () {    
     this.$i18n.locale = this.localConfig.locale
     return {
@@ -12,6 +12,17 @@ let GadgetCard = {
     },
   },
   computed: {
+    moduleGroup () {
+      if (this.$parent.webappModules.indexOf(this.module) > -1) {
+        return 'webapp'
+      }
+      if (this.config.ENV_DATABASE_DRIVERS && this.config.ENV_DATABASE_DRIVERS.indexOf(this.module) > -1) {
+        return 'database'
+      }
+      if (this.config.ENV_PAAS_SERVICES && Object.keys(this.config.ENV_PAAS_SERVICES).indexOf(this.module) > -1) {
+        return 'paas'
+      }
+    },
     searchKeyword () {
       let keyword = this.localConfig.searchKeyword 
       keyword = keyword.toLowerCase().trim()
@@ -30,6 +41,7 @@ let GadgetCard = {
       }
 
       if (this.module.toLowerCase().indexOf(this.searchKeyword) > -1 || 
+          this.moduleGroup.toLowerCase().indexOf(this.searchKeyword) > -1 || 
           this.$t(this.module + '.header').toLowerCase().indexOf(this.searchKeyword) > -1 ||
           this.$t(this.module + '.description').toLowerCase().indexOf(this.searchKeyword) > -1) {
         return true
@@ -42,8 +54,36 @@ let GadgetCard = {
       if (this.moduleGroup === 'database') {
         return 'orange'
       }
+      if (this.moduleGroup === 'paas') {
+        return 'blue'
+      }
+    },
+    notInStarred () {
+      return (this.localConfig.starred.indexOf(this.module) === -1)
     }
   },
+  methods: {
+    toggleStarred () {
+      this.$el.blur()
+      if (this.notInStarred === false) {
+        this.localConfig.starred = this.localConfig.starred.filter(m => (m !== this.module))
+      }
+      else {
+        this.localConfig.starred.unshift(this.module)
+        this.addHistory()
+      }
+      //console.log(this.localConfig.starred)
+    },
+    addHistory () {
+      this.$el.blur()
+      if (this.localConfig.history.indexOf(this.module) > -1) {
+        this.localConfig.history = this.localConfig.history.filter(m => (m !== this.module))
+      }
+      this.localConfig.history.unshift(this.module)
+      
+      //console.log(this.localConfig.history)
+    }
+  }
   // mounted() {
     
   // },

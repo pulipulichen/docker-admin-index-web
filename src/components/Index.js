@@ -8,7 +8,7 @@ let Index = {
     return {
       baseHostname: 'dev_local',
       webappModules: ['webapp', 'console', 'backup'],
-      paasModules: ['paas_git_jobs', 'paas_git_deploy', 'paas_quay', 'paas_argocd', 'paas_rencher']
+      //paasModules: ['paas_git_jobs', 'paas_git_deploy', 'paas_quay', 'paas_argocd', 'paas_rencher']
     }
   },
   components: {
@@ -34,22 +34,60 @@ let Index = {
         return (window[`ENV_` + module.toUpperCase()])
       })
     },
+    modules () {
+      let modules = [].concat(this.webappModules)
+
+      if (this.config.ENV_DATABASE_DRIVERS) {
+        modules = modules.concat(this.config.ENV_DATABASE_DRIVERS)
+      }
+
+      if (this.config.ENV_PAAS_SERVICES) {
+        modules = modules.concat(Object.keys(this.config.ENV_PAAS_SERVICES))
+      }
+
+      //console.log(modules)
+
+      return modules
+    },
+    modulesNotInHistory () {
+      return this.modules.filter(m => (this.localConfig.history.indexOf(m) === -1))
+    },
     sortedStaredModules () {
       let modules = []
       
-      this.localConfig.recentModules.forEach(module => {
-        if (this.localConfig.starredModules.indexOf(module) ===-1) {
+      this.localConfig.history.forEach(module => {
+        if (this.localConfig.starred.indexOf(module) === -1) {
           return false
         }
         modules.push(module)
       })
-      
-      
-      
+
+      this.modulesNotInHistory.forEach(module => {
+        if (this.localConfig.starred.indexOf(module) === -1) {
+          return false
+        }
+        modules.push(module)
+      })
+      //console.log(modules)
       return modules
     },
     sortedModules () {
       let modules = []
+      
+      this.localConfig.history.forEach(module => {
+        if (this.localConfig.starred.indexOf(module) > -1) {
+          return false
+        }
+        modules.push(module)
+      })
+
+      this.modulesNotInHistory.forEach(module => {
+        if (this.localConfig.starred.indexOf(module) > -1) {
+          return false
+        }
+        modules.push(module)
+      })
+      //console.log(modules)
       return modules
     }
   },
@@ -67,6 +105,7 @@ let Index = {
     setupENV () {
       this.config.ENV_DATABASE_DRIVERS = window.ENV_DATABASE_DRIVERS
       this.config.ENV_DEV_LOCAL_PORTS = window.ENV_DEV_LOCAL_PORTS
+      this.config.ENV_PAAS_SERVICES = window.ENV_PAAS_SERVICES
     },
     setupBaseHostname () {
       if (location.href.indexOf('.paas.') === -1 && 
@@ -102,6 +141,12 @@ let Index = {
       this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
     buildModuleURL (module, group) {
+      if (group === 'paas') {
+        let url = this.config.ENV_PAAS_SERVICES[module]
+        url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
+        return url
+      }
+
       if (group === 'database') {
         module = module + '_admin'
       }

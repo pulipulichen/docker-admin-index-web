@@ -1,5 +1,6 @@
-<a class="ui raised card"
+<a class="ui raised card GadgetCard"
    :href="link"
+   @click="addHistory"
    v-if="visible"
    :class="labelType"
    :target="module">
@@ -9,10 +10,16 @@
            :src="imageURL">
       {{ module }}
       <br />
-      <div class="ui top right attached mini label"
+      <div class="ui top left attached mini label"
            :class="labelType">
         {{ moduleGroup}}
       </div>
+      <span class="ui right corner mini label"
+         @click.stop.prevent="toggleStarred"
+         :class="{yellow: !notInStarred}">
+        <i class="star icon"
+           :class="{outline: notInStarred}"></i>
+      </span>
     </div>
     
   </div>

@@ -1,7 +1,9 @@
 let localConfig = {
   locale: 'zh-TW',
   
-  searchKeyword: '222'
+  searchKeyword: '',
+  history: [],
+  starred: []
 }
 
 export default localConfig

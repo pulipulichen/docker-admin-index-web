@@ -1,1 +1,1 @@
-總算是把admin做完了，我都要哭了。
+加上history跟starred，也為PAAS鋪路。
