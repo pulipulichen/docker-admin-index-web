@@ -70,16 +70,18 @@ let GadgetCard = {
       }
       else {
         this.localConfig.starred.unshift(this.module)
-        this.addHistory()
+        this.addHistory(0)
       }
       //console.log(this.localConfig.starred)
     },
-    addHistory () {
+    addHistory: async function (sleep = 100) {
       this.$el.blur()
-      if (this.localConfig.history.indexOf(this.module) > -1) {
-        this.localConfig.history = this.localConfig.history.filter(m => (m !== this.module))
+      let module = this.module
+      await this.utils.AsyncUtils.sleep(sleep)
+      if (this.localConfig.history.indexOf(module) > -1) {
+        this.localConfig.history = this.localConfig.history.filter(m => (m !== module))
       }
-      this.localConfig.history.unshift(this.module)
+      this.localConfig.history.unshift(module)
       
       //console.log(this.localConfig.history)
     }

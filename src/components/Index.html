@@ -36,7 +36,7 @@
   
   <div class="menu-padding"></div>
 
-  <div class="ui cards">
+  <div class="ui cards" v-if="sortedStaredModules.length > 0">
     <GadgetCard 
       v-for="m in sortedStaredModules"
       v-bind:config="config"
@@ -44,7 +44,8 @@
       v-bind:utils="utils"
       v-bind:module="m">
     </GadgetCard>
-
+  </div>
+  <div class="ui cards" v-if="sortedModules.length > 0">
     <GadgetCard 
       v-for="m in sortedModules"
       v-bind:config="config"

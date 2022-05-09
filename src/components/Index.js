@@ -103,9 +103,16 @@ let Index = {
   },
   methods: {
     setupENV () {
-      this.config.ENV_DATABASE_DRIVERS = window.ENV_DATABASE_DRIVERS
-      this.config.ENV_DEV_LOCAL_PORTS = window.ENV_DEV_LOCAL_PORTS
-      this.config.ENV_PAAS_SERVICES = window.ENV_PAAS_SERVICES
+      this.config.ENV_DATABASE_DRIVERS = this.stringToObject(window.ENV_DATABASE_DRIVERS)
+      this.config.ENV_DEV_LOCAL_PORTS = this.stringToObject(window.ENV_DEV_LOCAL_PORTS)
+      this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
+    },
+    stringToObject (str) {
+      if (typeof(str) === 'str') {
+        str = eval(str)
+        return this.stringToObject(str)
+      }
+      return str
     },
     setupBaseHostname () {
       if (location.href.indexOf('.paas.') === -1 && 
@@ -143,7 +150,7 @@ let Index = {
     buildModuleURL (module, group) {
       if (group === 'paas') {
         let url = this.config.ENV_PAAS_SERVICES[module]
-        url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
+        //url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
         return url
       }
 

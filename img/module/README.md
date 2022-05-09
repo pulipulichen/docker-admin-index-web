@@ -21,3 +21,15 @@ https://vecta.io/symbols/89/brands-na-nz/31/neo4j-icon
 
 mongo.png
 https://vecta.io/symbols/89/brands-na-nz/31/neo4j-icon
+
+paas_git_jobs
+https://icon-icons.com/icon/gitlab-tile-logo/170092
+
+paas_quay
+https://www.reddit.com/r/linux/comments/dvexh1/red_hat_introduces_open_source_project_quay/
+
+paas_argocd
+https://magmax.org/en/blog/argocd/
+
+paas_rencher
+https://store.rancherlabs.com/
