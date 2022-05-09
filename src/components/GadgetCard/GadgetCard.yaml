@@ -79,3 +79,19 @@ zh-TW:
   mongo:
     header: MongoDB
     description: JSON document database for schema-free applications.
+
+  paas_rancher:
+    header: Rancher
+    description: Open pods' shell terminals.
+
+  paas_argocd:
+    header: ArgoCD
+    description: Helm charts in Kubernetes.
+
+  paas_quay:
+    header: Quay
+    description: Private docker images repository.
+
+  paas_gitlab_jobs:
+    header: Gitlab Jobs
+    description: Excute CI Jobs when commiting.
