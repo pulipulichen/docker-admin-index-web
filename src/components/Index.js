@@ -108,7 +108,7 @@ let Index = {
       this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
     },
     stringToObject (str) {
-      if (typeof(str) === 'str') {
+      if (typeof(str) === 'string') {
         str = eval(str)
         return this.stringToObject(str)
       }
