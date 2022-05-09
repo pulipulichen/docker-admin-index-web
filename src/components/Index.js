@@ -103,13 +103,30 @@ let Index = {
   },
   methods: {
     setupENV () {
+      
       this.config.ENV_DATABASE_DRIVERS = this.stringToObject(window.ENV_DATABASE_DRIVERS)
+      //console.log('aaa')
       this.config.ENV_DEV_LOCAL_PORTS = this.stringToObject(window.ENV_DEV_LOCAL_PORTS)
-      this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
+      //console.log('2aaa')
+      //this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
+      this.config.ENV_PAAS_SERVICES = this.stringToObject("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/webapp-deployment-pudding-test20220428-2220#pods\"}")
+      //console.log("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/webapp-deployment-pudding-test20220428-2220#pods\"}")
+      //console.log(this.config.ENV_PAAS_SERVICES)
     },
     stringToObject (str) {
       if (typeof(str) === 'string') {
-        str = eval(str)
+        //console.log('go1')
+        try {
+          str = eval(str)
+        } catch (e) {
+          //console.log(e)
+        }
+        
+        //console.log('go2')
+        if (typeof(str) === 'string') {
+          str = JSON.parse(str)
+        }
+        //console.log(str)
         return this.stringToObject(str)
       }
       return str
