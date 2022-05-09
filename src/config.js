@@ -1,5 +1,5 @@
 let config = {
-  appName: 'chrome-shortcut-head-modifier',
+  appName: 'docker-admin-index-web',
   inited: false,
   
   debug: {

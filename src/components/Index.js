@@ -179,6 +179,10 @@ let Index = {
         return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS[module]
       }
       else {
+        if (module === 'webapp') {
+          return 'http://' + this.config.baseHostname + '/'
+        }
+
         let {port} = new URL(location.href)
 
         if (port !== '') {
