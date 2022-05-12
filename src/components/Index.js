@@ -7,7 +7,7 @@ let Index = {
     this.$i18n.locale = this.config.localConfig
     return {
       baseHostname: 'dev_local',
-      webappModules: ['webapp', 'console', 'backup'],
+      appGadgets: ['app', 'console', 'data'],
       //paasModules: ['paas_git_jobs', 'paas_git_deploy', 'paas_quay', 'paas_argocd', 'paas_rencher']
     }
   },
@@ -15,9 +15,9 @@ let Index = {
     'GadgetCard': GadgetCard
   },
   computed: {
-    computedWebappURL () {
+    computedAppURL () {
       if (this.config.baseHostname === 'dev-local') {
-        return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS['webapp']
+        return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS['app']
       }
       else {
         return 'http://' + this.config.baseHostname + '/'
@@ -35,7 +35,7 @@ let Index = {
       })
     },
     modules () {
-      let modules = [].concat(this.webappModules)
+      let modules = [].concat(this.appGadgets)
 
       if (this.config.ENV_DATABASE_DRIVERS) {
         modules = modules.concat(this.config.ENV_DATABASE_DRIVERS)
@@ -179,7 +179,7 @@ let Index = {
         return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS[module]
       }
       else {
-        if (module === 'webapp') {
+        if (module === 'app') {
           return 'http://' + this.config.baseHostname + '/'
         }
 

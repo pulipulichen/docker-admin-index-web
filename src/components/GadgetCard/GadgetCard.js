@@ -13,8 +13,8 @@ let GadgetCard = {
   },
   computed: {
     moduleGroup () {
-      if (this.$parent.webappModules.indexOf(this.module) > -1) {
-        return 'webapp'
+      if (this.$parent.appGadgets.indexOf(this.module) > -1) {
+        return 'app'
       }
       if (this.config.ENV_DATABASE_DRIVERS && this.config.ENV_DATABASE_DRIVERS.indexOf(this.module) > -1) {
         return 'database'
@@ -48,7 +48,7 @@ let GadgetCard = {
       }
     },
     labelType () {
-      if (this.moduleGroup === 'webapp') {
+      if (this.moduleGroup === 'app') {
         return 'teal'
       }
       if (this.moduleGroup === 'database') {

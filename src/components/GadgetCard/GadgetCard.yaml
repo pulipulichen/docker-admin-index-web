@@ -1,15 +1,15 @@
 en:
-  webapp:
-    header: Webapp
+  app:
+    header: Application
     description: Your main application.
 
   console:
     header: Console
-    description: Webapp's terminal.
+    description: App's terminal.
 
-  backup:
-    header: Bakcup
-    description: Backup data from your webapp and databases.
+  data:
+    header: Data
+    description: Backup data from your app and databases.
 
   mysql:
     header: MySQL
@@ -48,17 +48,17 @@ en:
     description: Excute CI Jobs when commiting.
 
 zh-TW:
-  webapp:
-    header: Webapp
+  app:
+    header: Application
     description: Your main application.
 
   console:
     header: Console
-    description: Webapp's terminal.
+    description: App's terminal.
 
-  backup:
-    header: Bakcup
-    description: Backup data from your webapp and databases.
+  data:
+    header: Data
+    description: Backup data from your app and databases.
 
   mysql:
     header: MySQL
@@ -79,7 +79,7 @@ zh-TW:
   mongo:
     header: MongoDB
     description: JSON document database for schema-free applications.
-
+  
   paas_rancher:
     header: Rancher
     description: Open pods' shell terminals.
