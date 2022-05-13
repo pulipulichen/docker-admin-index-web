@@ -1,7 +1,9 @@
 webapp.png
+app.png
 https://www.flaticon.com/free-icon/browser_331190?term=web&page=1&position=51&page=1&position=51&related_id=331190&origin=search
 
 backup.png
+data.png
 https://www.flaticon.com/free-icon/browser_331190?term=web&page=1&position=51&page=1&position=51&related_id=331190&origin=search
 
 console.png
