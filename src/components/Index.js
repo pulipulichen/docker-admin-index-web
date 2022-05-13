@@ -56,14 +56,16 @@ let Index = {
       let modules = []
       
       this.localConfig.history.forEach(module => {
-        if (this.localConfig.starred.indexOf(module) === -1) {
+        if (this.localConfig.starred.indexOf(module) === -1 || 
+            this.modules.indexOf(module) === -1) {
           return false
         }
         modules.push(module)
       })
 
       this.modulesNotInHistory.forEach(module => {
-        if (this.localConfig.starred.indexOf(module) === -1) {
+        if (this.localConfig.starred.indexOf(module) === -1 || 
+            this.modules.indexOf(module) === -1) {
           return false
         }
         modules.push(module)
@@ -75,14 +77,16 @@ let Index = {
       let modules = []
       
       this.localConfig.history.forEach(module => {
-        if (this.localConfig.starred.indexOf(module) > -1) {
+        if (this.localConfig.starred.indexOf(module) > -1 || 
+            this.modules.indexOf(module) === -1) {
           return false
         }
         modules.push(module)
       })
 
       this.modulesNotInHistory.forEach(module => {
-        if (this.localConfig.starred.indexOf(module) > -1) {
+        if (this.localConfig.starred.indexOf(module) > -1 || 
+            this.modules.indexOf(module) === -1) {
           return false
         }
         modules.push(module)
