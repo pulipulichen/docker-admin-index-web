@@ -176,7 +176,7 @@ let Index = {
       }
 
       if (group === 'database') {
-        module = module + '_admin'
+        //module = module + '_admin'
       }
 
       if (this.config.baseHostname === 'dev-local') {
