@@ -121,6 +121,7 @@ let Index = {
       if (typeof(str) === 'string') {
         //console.log('go1')
         try {
+          str = atob(str)
           str = eval(str)
         } catch (e) {
           //console.log(e)
