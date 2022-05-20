@@ -26,8 +26,8 @@ let Index = {
     computedConsoleURL () {
       return this.buildModuleURL('console')
     },
-    computedBackupURL () {
-      return this.buildModuleURL('backup')
+    computedDataURL () {
+      return this.buildModuleURL('data')
     },
     enabledPaasModules () {
       return this.paasModules.filter(module => {
