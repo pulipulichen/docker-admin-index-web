@@ -60,6 +60,15 @@ let GadgetCard = {
     },
     notInStarred () {
       return (this.localConfig.starred.indexOf(this.module) === -1)
+    },
+    moduleDisplay () {
+      let module = this.module
+
+      if (module.startsWith('paas_')) {
+        module = module.slice(5)
+      }
+
+      return module
     }
   },
   methods: {
