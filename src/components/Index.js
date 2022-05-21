@@ -113,6 +113,8 @@ let Index = {
       this.config.ENV_DEV_LOCAL_PORTS = this.stringToObject(window.ENV_DEV_LOCAL_PORTS)
       //console.log('2aaa')
       this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
+
+      this.config.ENV_MODULE_SUFFIX = this.stringToObject(window.ENV_MODULE_SUFFIX)
       //this.config.ENV_PAAS_SERVICES = this.stringToObject("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log(this.config.ENV_PAAS_SERVICES)
@@ -184,18 +186,23 @@ let Index = {
         }
         return 'http://localhost:' + port
       }
+      else if (module === 'app') {
+        return 'http://' + this.config.baseHostname + '/'
+      }
       else {
-        if (module === 'app') {
-          return 'http://' + this.config.baseHostname + '/'
-        }
-
+        
         let {port} = new URL(location.href)
 
         if (port !== '') {
           port = ":" + port
         }
 
-        return 'http://' + module + '.' + this.config.baseHostname + port + '/'
+        let suffix = ''
+        if (this.config.ENV_MODULE_SUFFIX[module]) {
+          suffix = this.config.ENV_MODULE_SUFFIX[module]
+        }
+
+        return 'http://' + module + '.' + this.config.baseHostname + port + '/' + suffix
       }
     }
   }
