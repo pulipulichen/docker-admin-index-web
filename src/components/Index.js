@@ -114,7 +114,7 @@ let Index = {
       //console.log('2aaa')
       this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
 
-      this.config.ENV_MODULE_SUFFIX = this.stringToObject(window.ENV_MODULE_SUFFIX)
+      this.config.ENV_DATABASE_SERVICES = this.stringToObject(window.ENV_DATABASE_SERVICES)
       //this.config.ENV_PAAS_SERVICES = this.stringToObject("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log(this.config.ENV_PAAS_SERVICES)
@@ -198,8 +198,14 @@ let Index = {
         }
 
         let suffix = ''
-        if (this.config.ENV_MODULE_SUFFIX[module]) {
-          suffix = this.config.ENV_MODULE_SUFFIX[module]
+        if (this.config.ENV_DATABASE_SERVICES[module] && 
+            this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
+          suffix = this.config.ENV_MODULE_SUFFIX[module].admin_suffix
+
+          suffix = suffix.replace(`{{ DOMAIN_SUFFIX }}`, this.config.baseHostnameShort)
+          if (suffix.startsWith('/')) {
+            suffix = suffix.slice(1)
+          }
         }
 
         return 'http://' + module + '.' + this.config.baseHostname + port + '/' + suffix
