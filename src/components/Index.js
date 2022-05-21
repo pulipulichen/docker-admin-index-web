@@ -202,7 +202,7 @@ let Index = {
             this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
           suffix = this.config.ENV_MODULE_SUFFIX[module].admin_suffix
 
-          suffix = suffix.replace(`{{ DOMAIN_SUFFIX }}`, this.config.baseHostnameShort)
+          suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
           if (suffix.startsWith('/')) {
             suffix = suffix.slice(1)
           }
