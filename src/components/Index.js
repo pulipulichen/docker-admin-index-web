@@ -183,16 +183,30 @@ let Index = {
         return url
       }
 
+      let suffix = ''
+      // console.log(module)
+      // console.log(this.config.ENV_DATABASE_SERVICES)
+
+      if (this.config.ENV_DATABASE_SERVICES[module] && 
+          this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
+        suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
+
+        suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
+        if (suffix.startsWith('/')) {
+          suffix = suffix.slice(1)
+        }
+      }
+
       if (this.config.baseHostname === 'dev-local') {
 
         let port = this.config.ENV_DEV_LOCAL_PORTS[module + '_admin']
         if (!port) {
           port = this.config.ENV_DEV_LOCAL_PORTS[module]
         }
-        return 'http://localhost:' + port
+        return 'http://localhost:' + port + '/' + suffix
       }
       else if (module === 'app') {
-        return 'http://' + this.config.baseHostname + '/'
+        return 'http://' + this.config.baseHostname + '/' + suffix
       }
       else {
         
@@ -200,20 +214,6 @@ let Index = {
 
         if (port !== '') {
           port = ":" + port
-        }
-
-        let suffix = ''
-        // console.log(module)
-        // console.log(this.config.ENV_DATABASE_SERVICES)
-
-        if (this.config.ENV_DATABASE_SERVICES[module] && 
-            this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
-          suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
-
-          suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
-          if (suffix.startsWith('/')) {
-            suffix = suffix.slice(1)
-          }
         }
 
         return 'http://' + module + '.' + this.config.baseHostname + port + '/' + suffix
