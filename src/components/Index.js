@@ -45,7 +45,7 @@ let Index = {
         modules = modules.concat(Object.keys(this.config.ENV_PAAS_SERVICES))
       }
 
-      console.log(modules)
+      // console.log(modules)
 
       return modules
     },
@@ -71,7 +71,7 @@ let Index = {
         modules.push(module)
       })
 
-      console.log('sortedStaredModules', modules)
+      // console.log('sortedStaredModules', modules)
 
       return modules
     },
@@ -95,7 +95,7 @@ let Index = {
       })
       //console.log(modules)
 
-      console.log('sortedModules', modules)
+      // console.log('sortedModules', modules)
 
       return modules
     }
