@@ -45,7 +45,7 @@ let Index = {
         modules = modules.concat(Object.keys(this.config.ENV_PAAS_SERVICES))
       }
 
-      //console.log(modules)
+      console.log(modules)
 
       return modules
     },
@@ -70,7 +70,9 @@ let Index = {
         }
         modules.push(module)
       })
-      //console.log(modules)
+
+      console.log('sortedStaredModules', modules)
+
       return modules
     },
     sortedModules () {
@@ -92,6 +94,9 @@ let Index = {
         modules.push(module)
       })
       //console.log(modules)
+
+      console.log('sortedModules', modules)
+
       return modules
     }
   },
@@ -198,9 +203,12 @@ let Index = {
         }
 
         let suffix = ''
+        // console.log(module)
+        // console.log(this.config.ENV_DATABASE_SERVICES)
+
         if (this.config.ENV_DATABASE_SERVICES[module] && 
             this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
-          suffix = this.config.ENV_MODULE_SUFFIX[module].admin_suffix
+          suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
 
           suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
           if (suffix.startsWith('/')) {

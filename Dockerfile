@@ -20,6 +20,7 @@ COPY package.json ./
 
 COPY postcss.config.js ./
 COPY service-worker.js ./
+COPY .env ./
 # package.Install the package described in json.
 RUN npm i
 
@@ -27,5 +28,7 @@ RUN npm i
 #COPY . .
 
 #RUN ls /app/*
+
+#RUN ulimit -n 65535
 
 CMD ["npm","run", "4.webpack-build-production"]

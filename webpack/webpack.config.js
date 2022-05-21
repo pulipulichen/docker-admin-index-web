@@ -1,6 +1,7 @@
 'use strict';
 
 let baseURL = 'http://localhost:5500'
+//let baseURL = 'https://test-thinkpad.puli.ml'
 
 //const dotenv = require('dotenv');
 //dotenv.config();
@@ -26,7 +27,9 @@ module.exports = (env, argv) => {
 
   if (argv.mode === 'production') {
     baseURL = 'https://pulipulichen.github.io/docker-admin-index-web'
+    //baseURL = 'https://test-thinkpad.puli.ml'
   }
+  
 
   let webpackConfig = {
     mode: argv.mode,
@@ -162,9 +165,14 @@ module.exports = (env, argv) => {
         '**/node_modules',
         '**/[documents',
         '**/dist',
-        '**/webpack'
+        '**/webpack',
+        "**/img",
+        //"/app/node_modules",
+        //"/app/src/styles/semantic-ui-niwsf/styles/themes/default/assets",
+        //"/app/src/styles/semantic-ui-niwsf"
       ],
-      
+      aggregateTimeout: 200,
+      poll: 1000,
     },
   } // let webpackConfig = {
 
@@ -256,6 +264,8 @@ module.exports = (env, argv) => {
   if (argv.mode === 'development') {
 
   }
+
+  console.log(webpackConfig)
 
   return webpackConfig
 }

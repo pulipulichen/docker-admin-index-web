@@ -14,6 +14,8 @@ services:
       - ./dist:/app/dist
       - ./src:/app/src
       - ./webpack:/app/webpack
+    environment:
+      - WATCHPACK_POLLING=true
     #Mount port 1000 on the container side to port 8080 on the host side.
     #ports:
     #  - "8080:8080"

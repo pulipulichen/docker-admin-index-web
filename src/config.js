@@ -13,9 +13,11 @@ let config = {
 
   baseHostname: '',
   baseHostnameShort: '',
-  baseImage: 'https://pulipulichen.github.io/docker-admin-index-web',
+  //baseImage: 'https://pulipulichen.github.io/docker-admin-index-web',
+  baseImage: 'https://test-thinkpad.puli.ml',
   ENV_DATABASE_DRIVERS: [],
-  ENV_DEV_LOCAL_PORTS: {}
+  ENV_DEV_LOCAL_PORTS: {},
+  ENV_DATABASE_SERVICES: {}
 }
 
 import styleConfig from './styles/style.config.js'

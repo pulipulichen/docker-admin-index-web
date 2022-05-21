@@ -93,7 +93,9 @@ let VueController = {
     
     //console.log('index.js mounted', 2)
     
+    //console.log('before waitForSemanticUIReady')
     await this.waitForSemanticUIReady()
+    //console.log('after waitForSemanticUIReady')
     
     this.addViewportListener()
     
@@ -106,6 +108,7 @@ let VueController = {
       let $body = $('body')
       while (typeof($body.modal) !== 'function') {
         await this.utils.AsyncUtils.sleep()
+        $body = $('body')
       }
       return true
     },

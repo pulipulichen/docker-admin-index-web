@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "DEMO: https://pulipulichen.github.io/Chrome-Shortcut-Head-Modifier/",
   "main": "index.js",
-  "scripts": {"start": "node index.html",
+  "scripts": {
+    "start": "node index.html",
     "w1.webpack-build-development": "webpack --mode development --config ./webpack/webpack.config.js ",
     "w2.webpack-watch-development": "webpack --watch --mode development --display errors-only --config ./webpack/webpack.config.js ",
     "w3.webpack-watch-build-production": "webpack --watch --mode production --display errors-only --config ./webpack/webpack.config.js ",
@@ -13,6 +14,7 @@
     "d2.webpack-watch-development": "bash ./docker-compose/d2.webpack-watch-development.sh",
     "d3.webpack-watch-build-production": "bash ./docker-compose/d3.webpack-watch-build-production.sh",
     "d4.webpack-build-production": "bash ./docker-compose/d4.webpack-build-production.sh",
+    "d9.bash": "bash ./docker-compose/docker-compose-bash.sh",
     "start-electron": "electron ."
   },
   "repository": {
