@@ -176,13 +176,13 @@ let Index = {
         return url
       }
 
-
       if (this.config.baseHostname === 'dev-local') {
 
-        if (group === 'database') {
-          module = module + '_admin'
+        let port = this.config.ENV_DEV_LOCAL_PORTS[module + '_admin']
+        if (!port) {
+          port = this.config.ENV_DEV_LOCAL_PORTS[module]
         }
-        return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS[module]
+        return 'http://localhost:' + port
       }
       else {
         if (module === 'app') {
