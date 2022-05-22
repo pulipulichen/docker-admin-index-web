@@ -212,7 +212,9 @@ let Index = {
         return 'http://localhost:' + port + '/' + suffix
       }
       else if (module === 'app') {
-        return 'http://' + this.config.baseHostname + '/' + suffix
+        let baseHostname = this.config.baseHostname
+        baseHostname = baseHostname.replace('.paas-vpn.', '.paas.')
+        return 'http://' + baseHostname + '/' + suffix
       }
       else {
         
