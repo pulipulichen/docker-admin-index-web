@@ -192,6 +192,12 @@ let Index = {
         suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
 
         suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
+        let currentPort = (new URL(location.href)).port
+        if (currentPort === '') {
+          currentPort = '80'
+        }
+        suffix = suffix.replace(`{{ HTTP_PORT }}`, currentPort)
+
         if (suffix.startsWith('/')) {
           suffix = suffix.slice(1)
         }
