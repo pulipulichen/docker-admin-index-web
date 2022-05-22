@@ -47,9 +47,13 @@ en:
     header: Gitlab Jobs
     description: Excute CI Jobs when commiting.
 
-  paas_grafana:
-    header: Grafana
-    description: Performance monitor dashboard.
+  paas_grafana_app:
+    header: Grafana APP
+    description: Application's performance monitor dashboard.
+
+  paas_grafana_data:
+    header: Grafana DATA
+    description: Data's performance monitor dashboard.
 
 zh-TW:
   app:
@@ -100,6 +104,10 @@ zh-TW:
     header: Gitlab Jobs
     description: Excute CI Jobs when commiting.
 
-  paas_grafana:
-    header: Grafana
-    description: Performance monitor dashboard.
+  paas_grafana_app:
+    header: Grafana APP
+    description: Application's performance monitor dashboard.
+
+  paas_grafana_data:
+    header: Grafana DATA
+    description: Data's performance monitor dashboard.
