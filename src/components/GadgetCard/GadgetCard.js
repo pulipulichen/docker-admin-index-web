@@ -68,6 +68,8 @@ let GadgetCard = {
         module = module.slice(5)
       }
 
+      module = module.replace('_', '-')
+
       return module
     }
   },

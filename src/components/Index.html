@@ -1,6 +1,6 @@
 <div class="Index"
      v-show="config.inited">
-  <div class="ui top fixed menu">
+  <div class="ui top fixed compact menu">
     <div class="item">
       <img :src="config.baseImage + '/img/favicon/favicon.png'" />
     </div>
@@ -10,17 +10,23 @@
     <a class="item"
        :href="computedAppURL"
        target="app">
-      App
+      <img class="ui image" 
+            :src="imageURL('app')">
+      APP
     </a>
     <a class="item"
        :href="computedConsoleURL"
        target="comsole">
-      Console
+       <img class="ui image" 
+       :src="imageURL('console')">
+      CONSOLE
     </a>
     <a class="item"
        :href="computedDataURL"
        target="data">
-      Data
+       <img class="ui image" 
+       :src="imageURL('data')">
+      DATA
     </a>
 
     <div class="right item">

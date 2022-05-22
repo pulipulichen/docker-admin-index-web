@@ -226,6 +226,9 @@ let Index = {
 
         return 'http://' + module + '.' + this.config.baseHostname + port + '/' + suffix
       }
+    },
+    imageURL (module) {
+      return this.config.baseImage + '/img/module/' + module + '.png'
     }
   }
 }
