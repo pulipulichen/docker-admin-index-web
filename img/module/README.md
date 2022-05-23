@@ -35,3 +35,6 @@ https://magmax.org/en/blog/argocd/
 
 paas_rencher
 https://store.rancherlabs.com/
+
+help
+https://www.flaticon.com/free-icon/info_785822?term=help&page=1&position=51&page=1&position=51&related_id=785822&origin=search
