@@ -29,13 +29,17 @@ let Index = {
     computedDataURL () {
       return this.buildModuleURL('data')
     },
+    computedHelpURL () {
+      return 'https://github.com/pulipulichen/dlll-paas-starter/wiki'
+    },
+    
     enabledPaasModules () {
       return this.paasModules.filter(module => {
         return (window[`ENV_` + module.toUpperCase()])
       })
     },
     modules () {
-      let modules = [].concat(this.appGadgets)
+      let modules = ['help'].concat(this.appGadgets)
 
       if (this.config.ENV_DATABASE_DRIVERS) {
         modules = modules.concat(this.config.ENV_DATABASE_DRIVERS)
@@ -181,6 +185,10 @@ let Index = {
         let url = this.config.ENV_PAAS_SERVICES[module]
         //url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
         return url
+      }
+
+      if (module === 'help') {
+        return this.computedHelpURL
       }
 
       let suffix = ''

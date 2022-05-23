@@ -55,6 +55,10 @@ en:
     header: Grafana DATA
     description: Data's performance monitor dashboard.
 
+  help:
+    header: Help
+    description: Instructions to develop your application.
+
 zh-TW:
   app:
     header: Application
@@ -111,3 +115,7 @@ zh-TW:
   paas_grafana_data:
     header: Grafana DATA
     description: Data's performance monitor dashboard.
+
+  help:
+    header: Help
+    description: Instructions to develop your application.
