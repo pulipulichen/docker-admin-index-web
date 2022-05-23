@@ -22,6 +22,7 @@ let GadgetCard = {
       if (this.config.ENV_PAAS_SERVICES && Object.keys(this.config.ENV_PAAS_SERVICES).indexOf(this.module) > -1) {
         return 'paas'
       }
+      return 'app'
     },
     searchKeyword () {
       let keyword = this.localConfig.searchKeyword 
