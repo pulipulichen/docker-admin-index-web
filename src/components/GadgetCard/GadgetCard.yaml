@@ -47,6 +47,10 @@ en:
     header: Gitlab Jobs
     description: Excute CI Jobs when commiting.
 
+  paas_gitlab_pipelines:
+    header: Gitlab Pipelines
+    description: Excute CI Pipelines when commiting.
+
   paas_grafana_app:
     header: Grafana APP
     description: Application's performance monitor dashboard.
@@ -107,6 +111,10 @@ zh-TW:
   paas_gitlab_jobs:
     header: Gitlab Jobs
     description: Excute CI Jobs when commiting.
+
+  paas_gitlab_pipelines:
+    header: Gitlab Pipelines
+    description: Excute CI Pipelines when commiting.
 
   paas_grafana_app:
     header: Grafana APP

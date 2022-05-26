@@ -107,7 +107,7 @@ let Index = {
   watch: {
     'config.baseHostname' () {
       //console.log('asas')
-      document.title = this.config.baseHostname
+      document.title = 'admin.' + this.config.baseHostnameShort
     }
   },
   mounted () {
