@@ -31,9 +31,13 @@ en:
     header: MongoDB
     description: JSON document database for schema-free applications.
   
-  paas_rancher:
-    header: Rancher
-    description: Open pods' shell terminals.
+  paas_rancher_app:
+    header: Rancher APP
+    description: Open app pods' shell terminals.
+
+  paas_rancher_data:
+    header: Rancher DATA
+    description: Open data pods' shell terminals.
 
   paas_argocd:
     header: ArgoCD
@@ -96,9 +100,13 @@ zh-TW:
     header: MongoDB
     description: JSON document database for schema-free applications.
   
-  paas_rancher:
-    header: Rancher
-    description: Open pods' shell terminals.
+  paas_rancher_app:
+    header: Rancher APP
+    description: Open app pods' shell terminals.
+
+  paas_rancher_data:
+    header: Rancher DATA
+    description: Open data pods' shell terminals.
 
   paas_argocd:
     header: ArgoCD
