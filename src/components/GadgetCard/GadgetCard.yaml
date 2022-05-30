@@ -63,6 +63,11 @@ en:
     header: Grafana DATA
     description: Data's performance monitor dashboard.
 
+  paas_grafana_pvc:
+    header: Grafana PVC
+    description: Persistent Volume's performance monitor dashboard.
+
+
   help:
     header: Help
     description: Instructions to develop your application.
@@ -131,6 +136,11 @@ zh-TW:
   paas_grafana_data:
     header: Grafana DATA
     description: Data's performance monitor dashboard.
+
+  paas_grafana_pvc:
+    header: Grafana PVC
+    description: Persistent Volume's performance monitor dashboard.
+
 
   help:
     header: Help
