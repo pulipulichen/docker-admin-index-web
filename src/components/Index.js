@@ -180,10 +180,10 @@ let Index = {
       document.title = this.config.baseHostname
       //this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
-    getSuffix () {
+    getSuffix (module) {
       let suffix = ''
       // console.log(module)
-      // console.log(this.config.ENV_DATABASE_SERVICES)
+      // console.log(this.config.ENV_DATABASE_SERVICES[module])
 
       if (this.config.ENV_DATABASE_SERVICES[module] && 
           this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
@@ -222,7 +222,9 @@ let Index = {
         return this.computedHelpURL
       }
 
-      let suffix = this.getSuffix()
+      let suffix = this.getSuffix(module)
+      // console.log({suffix})
+      // console.log(this.config.baseHostname)
 
       if (this.config.baseHostname === 'dev-local') {
 
