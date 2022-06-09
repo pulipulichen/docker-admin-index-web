@@ -180,17 +180,7 @@ let Index = {
       document.title = this.config.baseHostname
       //this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
-    buildModuleURL (module, group) {
-      if (group === 'paas') {
-        let url = this.config.ENV_PAAS_SERVICES[module]
-        //url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
-        return url
-      }
-
-      if (module === 'help') {
-        return this.computedHelpURL
-      }
-
+    getSuffix () {
       let suffix = ''
       // console.log(module)
       // console.log(this.config.ENV_DATABASE_SERVICES)
@@ -198,7 +188,15 @@ let Index = {
       if (this.config.ENV_DATABASE_SERVICES[module] && 
           this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
         suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
+      }
 
+      if (this.config.ENV_DATABASE_SERVICES[module] && 
+          this.config.ENV_DATABASE_SERVICES[module].admin_suffix_dev_local && 
+          this.config.baseHostname === 'dev-local') {
+        suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix_dev_local
+      }
+
+      if (suffix !== '') {
         suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
         let currentPort = (new URL(location.href)).port
         if (currentPort === '') {
@@ -210,6 +208,21 @@ let Index = {
           suffix = suffix.slice(1)
         }
       }
+
+      return suffix
+    },
+    buildModuleURL (module, group) {
+      if (group === 'paas') {
+        let url = this.config.ENV_PAAS_SERVICES[module]
+        //url = url.replace(`{SERVICE_NAME}`, this.config.baseHostnameShort)
+        return url
+      }
+
+      if (module === 'help') {
+        return this.computedHelpURL
+      }
+
+      let suffix = this.getSuffix()
 
       if (this.config.baseHostname === 'dev-local') {
 
