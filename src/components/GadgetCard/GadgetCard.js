@@ -13,16 +13,7 @@ let GadgetCard = {
   },
   computed: {
     moduleGroup () {
-      if (this.$parent.appGadgets.indexOf(this.module) > -1) {
-        return 'app'
-      }
-      if (this.config.ENV_DATABASE_DRIVERS && this.config.ENV_DATABASE_DRIVERS.indexOf(this.module) > -1) {
-        return 'database'
-      }
-      if (this.config.ENV_PAAS_SERVICES && Object.keys(this.config.ENV_PAAS_SERVICES).indexOf(this.module) > -1) {
-        return 'paas'
-      }
-      return 'app'
+      return this.$parent.getModuleGroup(this.module)
     },
     searchKeyword () {
       let keyword = this.localConfig.searchKeyword 

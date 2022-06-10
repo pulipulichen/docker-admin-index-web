@@ -58,6 +58,7 @@
       v-bind:module="m">
     </GadgetCard>
   </div>
+  <!--
   <div class="ui cards" v-if="sortedModules.length > 0">
     <GadgetCard 
       v-for="m in sortedModules"
@@ -67,4 +68,17 @@
       v-bind:module="m">
     </GadgetCard>
   </div>
+  -->
+  <div v-for="group in groupedModules">
+    <div class="ui cards">
+      <GadgetCard 
+        v-for="m in group"
+        v-bind:config="config"
+        v-bind:localConfig="localConfig"
+        v-bind:utils="utils"
+        v-bind:module="m">
+      </GadgetCard>
+    </div>
+  </div>
+
 </div>

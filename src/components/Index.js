@@ -102,6 +102,20 @@ let Index = {
       // console.log('sortedModules', modules)
 
       return modules
+    },
+    groupedModules () {
+      let groupJSON = {}
+
+      this.modules.forEach((module) => {
+        let group = this.getModuleGroup(module)
+
+        if (!groupJSON[group]) {
+          groupJSON[group] = []
+        }
+        groupJSON[group].push(module)
+      })
+
+      return Object.keys(groupJSON).map(group => groupJSON[group])
     }
   },
   watch: {
@@ -252,7 +266,21 @@ let Index = {
     },
     imageURL (module) {
       return this.config.baseImage + '/img/module/' + module + '.png'
-    }
+    },
+    getModuleGroup (module) {
+      if (this.appGadgets.indexOf(module) > -1) {
+        return 'app'
+      }
+      if (this.config.ENV_DATABASE_DRIVERS 
+        && this.config.ENV_DATABASE_DRIVERS.indexOf(module) > -1) {
+        return 'database'
+      }
+      if (this.config.ENV_PAAS_SERVICES 
+        && Object.keys(this.config.ENV_PAAS_SERVICES).indexOf(module) > -1) {
+        return 'paas'
+      }
+      return 'app'
+    },
   }
 }
 
