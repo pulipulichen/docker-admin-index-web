@@ -39,6 +39,10 @@ en:
     header: Rancher DATA
     description: Open data pods' shell terminals.
 
+  paas_rancher_admin:
+    header: Rancher ADMIN
+    description: Open admin pods' shell terminals.
+
   paas_argocd:
     header: ArgoCD
     description: Helm charts in Kubernetes.
