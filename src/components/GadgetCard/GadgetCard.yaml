@@ -145,6 +145,9 @@ zh-TW:
     header: Grafana PVC
     description: Persistent Volume's performance monitor dashboard.
 
+  paas_rancher_admin:
+    header: Rancher ADMIN
+    description: Open admin pods' shell terminals.
 
   help:
     header: Help

@@ -203,11 +203,19 @@ let Index = {
           this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
         suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix
       }
-
-      if (this.config.ENV_DATABASE_SERVICES[module] && 
+      else if (this.config.ENV_DATABASE_SERVICES[module] && 
           this.config.ENV_DATABASE_SERVICES[module].admin_suffix_dev_local && 
           this.config.baseHostname === 'dev-local') {
         suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix_dev_local
+      }
+      else if (this.config.ENV_APP_SERVICES[module] && 
+        this.config.ENV_APP_SERVICES[module].admin_suffix) {
+        suffix = this.config.ENV_APP_SERVICES[module].admin_suffix
+      }
+      else if (this.config.ENV_APP_SERVICES[module] && 
+        this.config.ENV_APP_SERVICES[module].admin_suffix_dev_local && 
+        this.config.baseHostname === 'dev-local') {
+        suffix = this.config.ENV_APP_SERVICES[module].admin_suffix_dev_local
       }
 
       if (suffix !== '') {
