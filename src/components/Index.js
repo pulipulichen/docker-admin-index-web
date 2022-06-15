@@ -201,6 +201,7 @@ let Index = {
       // console.log(module)
       // console.log(this.config.ENV_DATABASE_SERVICES[module])
 
+      // 不可以用if else ，一定要個別if!!
       if (this.config.ENV_DATABASE_SERVICES[module] && 
           this.config.ENV_DATABASE_SERVICES[module].admin_suffix) {
         suffix = this.config.ENV_DATABASE_SERVICES[module].admin_suffix

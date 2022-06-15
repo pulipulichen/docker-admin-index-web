@@ -17,7 +17,8 @@ let config = {
   //fbaseImage: 'https://test-thinkpad.puli.ml',
   ENV_DATABASE_DRIVERS: [],
   ENV_DEV_LOCAL_PORTS: {},
-  ENV_DATABASE_SERVICES: {}
+  ENV_DATABASE_SERVICES: {},
+  ENV_APP_SERVICES: {}
 }
 
 import styleConfig from './styles/style.config.js'
