@@ -137,6 +137,8 @@ let Index = {
       //console.log('2aaa')
       this.config.ENV_PAAS_SERVICES = this.stringToObject(window.ENV_PAAS_SERVICES)
 
+      this.config.ENV_APP_SERVICES = this.stringToObject(window.ENV_APP_SERVICES)
+
       this.config.ENV_DATABASE_SERVICES = this.stringToObject(window.ENV_DATABASE_SERVICES)
       //this.config.ENV_PAAS_SERVICES = this.stringToObject("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")

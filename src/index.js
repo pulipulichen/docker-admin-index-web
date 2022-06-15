@@ -87,7 +87,7 @@ let VueController = {
   },
   watch: {},
   mounted: async function () {
-    //console.log('index.js mounted', 1)
+    // console.log('index.js mounted', 1)
     
     this.restoreFromLocalStorage()
     
