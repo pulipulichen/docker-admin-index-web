@@ -121,7 +121,7 @@ let Index = {
   watch: {
     'config.baseHostname' () {
       //console.log('asas')
-      document.title = 'admin.' + this.config.baseHostnameShort
+      document.title = 'admin-' + this.config.baseHostnameShort
     }
   },
   mounted () {
@@ -174,7 +174,7 @@ let Index = {
 
       let {hostname} = new URL(location.href)
 
-      if (hostname.startsWith('admin.')) {
+      if (hostname.startsWith('admin-')) {
         this.config.baseHostname = hostname.slice(6)
       }
       else {
@@ -189,10 +189,20 @@ let Index = {
       }
 
       let parts = hostname.split('.')
-      if (parts.length > 2) {
-        parts = parts.splice(-2)
+      // https://dlll-paas-starter-pudding.paas.dlll.pulipuli.info/
+      // https://admin-dlll-paas-starter-pudding.paas.dlll.pulipuli.info/
+      
+      let tempParts = []
+      for (let i = 0; i < parts.length; i++) {
+        let part = parts[i]
+        if (part === 'paas' || part === 'paas-vpn') {
+          break
+        }
+        tempParts.push(part)
       }
-      this.config.baseHostnameShort = parts.join('.')
+      parts = tempParts
+
+      this.config.baseHostnameShort = parts.join('-')
       document.title = this.config.baseHostname
       //this.config.baseImage = 'https://pulipulichen.github.io/docker-admin-index-web'
     },
@@ -273,7 +283,7 @@ let Index = {
           port = ":" + port
         }
 
-        return 'http://' + module + '.' + this.config.baseHostname + port + '/' + suffix
+        return 'http://' + module + '-' + this.config.baseHostname + port + '/' + suffix
       }
     },
     imageURL (module) {
