@@ -16,12 +16,15 @@ let Index = {
   },
   computed: {
     computedAppURL () {
+      /*
       if (this.config.baseHostname === 'dev-local') {
         return '//localhost:' + this.config.ENV_DEV_LOCAL_PORTS['app']
       }
       else {
         return '//' + this.config.baseHostname + '/'
       }
+      */
+      return this.buildModuleURL('app', 'app')
     },
     computedConsoleURL () {
       return this.buildModuleURL('console')
