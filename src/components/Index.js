@@ -17,10 +17,10 @@ let Index = {
   computed: {
     computedAppURL () {
       if (this.config.baseHostname === 'dev-local') {
-        return 'http://localhost:' + this.config.ENV_DEV_LOCAL_PORTS['app']
+        return '//localhost:' + this.config.ENV_DEV_LOCAL_PORTS['app']
       }
       else {
-        return 'http://' + this.config.baseHostname + '/'
+        return '//' + this.config.baseHostname + '/'
       }
     },
     computedConsoleURL () {
@@ -268,12 +268,12 @@ let Index = {
         if (!port) {
           port = this.config.ENV_DEV_LOCAL_PORTS[module]
         }
-        return 'http://localhost:' + port + '/' + suffix
+        return '//localhost:' + port + '/' + suffix
       }
       else if (module === 'app') {
         let baseHostname = this.config.baseHostname
         baseHostname = baseHostname.replace('.paas-vpn.', '.paas.')
-        return 'http://' + baseHostname + '/' + suffix
+        return '//' + baseHostname + '/' + suffix
       }
       else {
         
@@ -283,7 +283,7 @@ let Index = {
           port = ":" + port
         }
 
-        return 'http://' + module + '-' + this.config.baseHostname + port + '/' + suffix
+        return '//' + module + '-' + this.config.baseHostname + port + '/' + suffix
       }
     },
     imageURL (module) {
