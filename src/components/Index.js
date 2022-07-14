@@ -237,7 +237,7 @@ let Index = {
         let urlObject = (new URL(location.href))
         let currentPort = urlObject.port
         if (currentPort === '') {
-          if (urlObject.protocol === 'http') {
+          if (urlObject.protocol === 'http:') {
             currentPort = '80'
           }
           else {
