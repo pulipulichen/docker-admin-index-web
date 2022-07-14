@@ -234,11 +234,17 @@ let Index = {
 
       if (suffix !== '') {
         suffix = suffix.replace(`{{ BASE_HOSTNAME }}`, this.config.baseHostname)
-        let currentPort = (new URL(location.href)).port
+        let urlObject = (new URL(location.href))
+        let currentPort = urlObject.port
         if (currentPort === '') {
-          currentPort = '80'
+          if (urlObject.protocol === 'http') {
+            currentPort = '80'
+          }
+          else {
+            currentPort = '443'
+          }
         }
-        suffix = suffix.replace(`{{ HTTP_PORT }}`, currentPort)
+        suffix = suffix.replace(`{{ PORT }}`, currentPort)
 
         if (suffix.startsWith('/')) {
           suffix = suffix.slice(1)
