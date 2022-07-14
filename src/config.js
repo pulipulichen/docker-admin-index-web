@@ -18,7 +18,8 @@ let config = {
   ENV_DATABASE_DRIVERS: [],
   ENV_DEV_LOCAL_PORTS: {},
   ENV_DATABASE_SERVICES: {},
-  ENV_APP_SERVICES: {}
+  ENV_APP_SERVICES: {},
+  ENV_CUSTOM_DOMAIN: null
 }
 
 import styleConfig from './styles/style.config.js'

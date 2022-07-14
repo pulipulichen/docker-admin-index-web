@@ -143,6 +143,8 @@ let Index = {
       //this.config.ENV_PAAS_SERVICES = this.stringToObject("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log("{\"paas_argocd\":\"https://argocd.nccu.syntixi.dev/applications/deploybot-test20220428-2220-pudding\",\"paas_git_jobs\":\"https://gitlab.nccu.syntixi.dev/pudding/test20220428-2220/-/jobs\",\"paas_quay\":\"https://quay.nccu.syntixi.dev/repository/dlll/test20220428-2220-pudding?tab=tags\",\"paas_rencher\":\"https://rancher.nccu.syntixi.dev/dashboard/c/local/explorer/apps.deployment/default/app-deployment-pudding-test20220428-2220#pods\"}")
       //console.log(this.config.ENV_PAAS_SERVICES)
+
+      this.config.ENV_CUSTOM_DOMAIN = window.ENV_CUSTOM_DOMAIN
     },
     stringToObject (str) {
       if (typeof(str) === 'string') {
@@ -277,6 +279,10 @@ let Index = {
         return '//localhost:' + port + '/' + suffix
       }
       else if (module === 'app') {
+        if (this.config.ENV_CUSTOM_DOMAIN) {
+          return '//' + this.config.ENV_CUSTOM_DOMAIN + '/' + suffix
+        }
+
         let baseHostname = this.config.baseHostname
         baseHostname = baseHostname.replace('.paas-vpn.', '.paas.')
         return '//' + baseHostname + '/' + suffix
